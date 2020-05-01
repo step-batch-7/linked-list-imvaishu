@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "list.h"
+#include "numbers.h"
 
 char take_operation_to_perform(void)
 {
@@ -51,7 +52,6 @@ int main(void)
   printf("status %u\n",status);
   operation = take_operation_to_perform();
   }
-  status = 0;
   printf("status %u\n",status);
   return 0;
 }
