@@ -37,6 +37,10 @@ Status choose_operation(List_ptr list,char operation)
      status = 1;
      return status;
      break;
+  case 'd':
+     take_input(&value);
+     return add_unique(list,value);
+     break;
   }
  return status;
 }

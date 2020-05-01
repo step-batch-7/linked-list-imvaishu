@@ -58,3 +58,17 @@ void display(List_ptr list)
     p_walk = p_walk->next;
   }
 } 
+
+Status add_unique(List_ptr list, int value)
+{
+  Node_ptr p_walk = list->head;
+  for(int i = 0 ; i < list->count ; i++ )
+  {
+    if(p_walk->value == value){
+      Status status = Failure;
+      return status;
+    }
+      p_walk = p_walk->next;
+    }
+    return add_to_end(list,value);
+}
