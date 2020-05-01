@@ -24,8 +24,13 @@ Status choose_operation(List_ptr list)
     take_input(&value);
     return add_to_end(list, value);
     break;
-    default:
-    break;
+  case 'b':
+     take_input(&value);
+     return add_to_start(list,value);
+     break;
+  case 'l':
+     display(list);
+     break;
   }
 }
 

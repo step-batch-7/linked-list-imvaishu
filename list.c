@@ -23,7 +23,6 @@ Node_ptr create_node(int value)
 
 Status add_to_end(List_ptr list, int value)
 {
-  Status status ;
   Node_ptr new_node = create_node(value);
   if (list->head == NULL)
   {
@@ -35,7 +34,18 @@ Status add_to_end(List_ptr list, int value)
   }
   list->last = new_node;
   list->count++;
-  status = Success;
+  Status status = Success;
+  return status;
+}
+
+Status add_to_start(List_ptr list,int value)
+{
+  Node_ptr new_node = create_node(value);
+  Node_ptr previous_node = list->head;
+  list->head = new_node;
+  list->head->next = previous_node;
+  list->count++;
+  Status status = Success;
   return status;
 }
 
@@ -44,7 +54,7 @@ void display(List_ptr list)
   Node_ptr p_walk = list->head;
   while(p_walk != NULL)
   {
-    printf("%d",p_walk->value);
+    printf("%d\n",p_walk->value);
     p_walk = p_walk->next;
   }
 } 
