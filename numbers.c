@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include "list.h"
 
-void take_operation_to_perform(char *operation)
-  {
-   printf("Please enter the alphabet of the operation you would like to perform\n");
-   scanf("%c",operation);
-   while ((getchar()) != '\n'); 
-  }
+char take_operation_to_perform(void)
+{
+  char option;
+  printf("Please enter the alphabet of the operation you would like to perform\n");
+  scanf("%c", &option);
+  while ((getchar()) != '\n');
+  return option;
+}
 
 void take_input(int *value)
 {
@@ -15,14 +17,12 @@ void take_input(int *value)
   while ((getchar()) != '\n'); 
 }
 
-Status choose_operation(List_ptr list)
+Status choose_operation(List_ptr list,char operation)
 {
- char operation;
- take_operation_to_perform(&operation);
-
+ int value;
+ Status status = 0;
  switch (operation)
   {
-  int value;
   case 'a':
     take_input(&value);
     return add_to_end(list, value);
@@ -33,21 +33,25 @@ Status choose_operation(List_ptr list)
      break;
   case 'l':
      display(list);
-     Status status = 1;
+     status = 1;
      return status;
      break;
   }
+ return status;
 }
 
 int main(void)
 {
   List_ptr list = create_list();
+  char operation = take_operation_to_perform();
   Status status = 1;
-  while(1)
+  while(operation != 'm')
   {
-  status = choose_operation(list);
-  printf("Success\n");
+  status = choose_operation(list,operation);
+  printf("status %u\n",status);
+  operation = take_operation_to_perform();
   }
-  printf("Failure\n");
+  status = 0;
+  printf("status %u\n",status);
   return 0;
 }
