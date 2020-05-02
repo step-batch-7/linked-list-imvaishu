@@ -174,4 +174,18 @@ Status remove_from_end(List_ptr list)
   list->count--;
   return Success;
 }
-  
+
+Status remove_first_occurrence(List_ptr list, int value)
+{
+  Node_ptr p_walk = list->head;
+
+  for(int i = 1 ; i < list->count ; i++)
+  {
+    if(p_walk->value == value)
+    {
+      return remove_at(list,i);
+    }
+    p_walk = p_walk->next;
+  }
+  return Success;
+}

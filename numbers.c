@@ -50,7 +50,11 @@ Status choose_operation(List_ptr list,char operation)
   case 'g':
      take_input(&position,POSITION_TEXT);
      return remove_at(list,position);
-     break;              
+     break;
+  case 'h':
+     take_input(&value,INPUT_TEXT);
+     return remove_first_occurrence(list,value);
+     break;                   
   case 'l':
      display(list);
      return Success;
