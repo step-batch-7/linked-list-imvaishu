@@ -100,7 +100,44 @@ void display(List_ptr list)
 Status remove_from_start(List_ptr list)
 {
   Node_ptr first_element = list->head;
+  if(list->head == NULL)
+  {
+    return Success;
+  }
   list->head = first_element->next;
+  list->count--;
   free(first_element);
+  return Success;
+}
+
+Status remove_from_end(List_ptr list)
+{
+  Node_ptr last_element = list->last;
+  Node_ptr previous_element;
+  Node_ptr p_walk = list->head;
+  int position = 0;
+  if(list->head == NULL)
+  {
+    return Success;
+  }
+  if(list->count == 1)
+  {
+    free(list->head);
+    list->head = NULL;
+    list->count--;
+    return Success;
+  }
+  while(position < list->count){
+    if(position == (list->count - 2))
+    {
+     previous_element = p_walk;
+    }
+    p_walk = p_walk->next;
+    position++;
+  }
+  list->last = previous_element;
+  previous_element->next = NULL;
+  list->count--;
+  free(last_element);
   return Success;
 }

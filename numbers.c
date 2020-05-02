@@ -43,7 +43,10 @@ Status choose_operation(List_ptr list,char operation)
      break;
   case 'e':
      return remove_from_start(list);
-     break;      
+     break;
+  case 'f':
+     return remove_from_end(list);
+     break;         
   case 'l':
      display(list);
      return Success;
