@@ -34,8 +34,33 @@ Status add_to_end(List_ptr list, int value)
   }
   list->last = new_node;
   list->count++;
-  Status status = Success;
-  return status;
+
+  return Success;
+}
+
+Status insert_at(List_ptr list, int value, int position) 
+{
+  if(position < 0 || position > list->count){
+    return Failure;
+  }
+  if(position == 0) {
+    return add_to_start(list, value);
+  }
+  if(position == list->count) {
+    return add_to_end(list, value);
+  }
+  int count = 1;
+  Node_ptr new_node = create_node(value);
+  Node_ptr p_walk = list->head;
+  while (count != position) {
+    p_walk = p_walk->next;
+    count++;
+  }
+  new_node->next = p_walk->next;
+  p_walk->next = new_node;
+  list->count++;
+  
+  return Success;
 }
 
 Status add_to_start(List_ptr list,int value)
@@ -45,8 +70,8 @@ Status add_to_start(List_ptr list,int value)
   list->head = new_node;
   list->head->next = previous_node;
   list->count++;
-  Status status = Success;
-  return status;
+  
+  return Success;
 }
 
 void display(List_ptr list)
@@ -65,10 +90,10 @@ Status add_unique(List_ptr list, int value)
   for(int i = 0 ; i < list->count ; i++ )
   {
     if(p_walk->value == value){
-      Status status = Failure;
-      return status;
+      return Failure;
     }
       p_walk = p_walk->next;
     }
     return add_to_end(list,value);
 }
+

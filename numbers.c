@@ -21,6 +21,7 @@ void take_input(int *value)
 Status choose_operation(List_ptr list,char operation)
 {
  int value;
+ int position;
  Status status = 0;
  switch (operation)
   {
@@ -31,6 +32,11 @@ Status choose_operation(List_ptr list,char operation)
   case 'b':
      take_input(&value);
      return add_to_start(list,value);
+     break;
+  case 'c':
+     take_input(&value);
+     take_input(&position);
+     return insert_at(list,value,position);
      break;
   case 'l':
      display(list);
