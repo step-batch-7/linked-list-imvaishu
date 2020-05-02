@@ -141,3 +141,37 @@ Status remove_from_end(List_ptr list)
   free(last_element);
   return Success;
 }
+
+ Status remove_at(List_ptr list,int position)
+{
+  Node_ptr p_walk = list->head;
+  Node_ptr previous_element;
+  Node_ptr remove_element;
+  if(position <= 0 || position > list->count)
+  {
+    return Failure;
+  }
+  if(position == 1)
+  {
+    return remove_from_start(list); 
+  }
+  if(position == list->count)
+  {
+    return remove_from_end(list);
+  }
+  int count = 0;
+  while(count < position){
+    if(count == position - 2 )
+    {
+     previous_element = p_walk;
+     remove_element = p_walk->next;
+    }
+    p_walk = p_walk->next;
+    count++;
+  }
+  previous_element->next = p_walk;
+  free(remove_element);
+  list->count--;
+  return Success;
+}
+  

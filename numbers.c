@@ -46,7 +46,11 @@ Status choose_operation(List_ptr list,char operation)
      break;
   case 'f':
      return remove_from_end(list);
-     break;         
+     break; 
+  case 'g':
+     take_input(&position,POSITION_TEXT);
+     return remove_at(list,position);
+     break;              
   case 'l':
      display(list);
      return Success;
