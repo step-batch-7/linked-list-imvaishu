@@ -221,3 +221,19 @@ Status clear_list(List_ptr list)
   list->count = 0;
   return Success;
 }
+
+void destroy_list(List_ptr list)
+{
+Node_ptr p_walk = list->head;
+  Node_ptr clear_element = NULL;
+  while(p_walk != NULL)
+  {
+    clear_element = p_walk;
+    p_walk = p_walk->next;
+    free(clear_element);
+  }
+  list->head = NULL;
+  list->last = NULL;
+  list->count = 0;
+  free(list);
+}

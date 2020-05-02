@@ -61,7 +61,7 @@ Status choose_operation(List_ptr list,char operation)
      break;
   case 'j':
      return clear_list(list);
-     break;       
+     break;
   case 'l':
      display(list);
      return Success;
@@ -82,5 +82,6 @@ int main(void)
   operation = take_operation_to_perform();
   }
   printf("status %u\n",status);
+  destroy_list(list);
   return 0;
 }
