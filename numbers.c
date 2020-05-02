@@ -11,9 +11,9 @@ char take_operation_to_perform(void)
   return option;
 }
 
-void take_input(int *value)
+void take_input(int *value,char *text)
 {
-  printf("Please enter a value...\n");
+  printf("%s\n",text);
   scanf("%d",value);
   while ((getchar()) != '\n'); 
 }
@@ -22,33 +22,31 @@ Status choose_operation(List_ptr list,char operation)
 {
  int value;
  int position;
- Status status = 0;
  switch (operation)
   {
   case 'a':
-    take_input(&value);
+    take_input(&value,INPUT_TEXT);
     return add_to_end(list, value);
     break;
   case 'b':
-     take_input(&value);
+     take_input(&value,INPUT_TEXT);
      return add_to_start(list,value);
      break;
   case 'c':
-     take_input(&value);
-     take_input(&position);
+     take_input(&value,INPUT_TEXT);
+     take_input(&position,POSITION_TEXT);
      return insert_at(list,value,position);
      break;
   case 'l':
      display(list);
-     status = 1;
-     return status;
+     return Success;
      break;
   case 'd':
-     take_input(&value);
+     take_input(&value,INPUT_TEXT);
      return add_unique(list,value);
      break;
   }
- return status;
+ return Failure;
 }
 
 int main(void)
