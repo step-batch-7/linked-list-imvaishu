@@ -37,13 +37,16 @@ Status choose_operation(List_ptr list,char operation)
      take_input(&position,POSITION_TEXT);
      return insert_at(list,value,position);
      break;
-  case 'l':
-     display(list);
-     return Success;
-     break;
   case 'd':
      take_input(&value,INPUT_TEXT);
      return add_unique(list,value);
+     break;
+  case 'e':
+     return remove_from_start(list);
+     break;      
+  case 'l':
+     display(list);
+     return Success;
      break;
   }
  return Failure;

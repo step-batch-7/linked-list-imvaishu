@@ -38,6 +38,17 @@ Status add_to_end(List_ptr list, int value)
   return Success;
 }
 
+Status add_to_start(List_ptr list,int value)
+{
+  Node_ptr new_node = create_node(value);
+  Node_ptr previous_node = list->head;
+  list->head = new_node;
+  list->head->next = previous_node;
+  list->count++;
+  
+  return Success;
+}
+
 Status insert_at(List_ptr list, int value, int position) 
 {
   if(position < 0 || position > list->count){
@@ -63,27 +74,6 @@ Status insert_at(List_ptr list, int value, int position)
   return Success;
 }
 
-Status add_to_start(List_ptr list,int value)
-{
-  Node_ptr new_node = create_node(value);
-  Node_ptr previous_node = list->head;
-  list->head = new_node;
-  list->head->next = previous_node;
-  list->count++;
-  
-  return Success;
-}
-
-void display(List_ptr list)
-{
-  Node_ptr p_walk = list->head;
-  while(p_walk != NULL)
-  {
-    printf("%d\n",p_walk->value);
-    p_walk = p_walk->next;
-  }
-} 
-
 Status add_unique(List_ptr list, int value)
 {
   Node_ptr p_walk = list->head;
@@ -97,3 +87,20 @@ Status add_unique(List_ptr list, int value)
     return add_to_end(list,value);
 }
 
+void display(List_ptr list)
+{
+  Node_ptr p_walk = list->head;
+  while(p_walk != NULL)
+  {
+    printf("%d\n",p_walk->value);
+    p_walk = p_walk->next;
+  }
+} 
+
+Status remove_from_start(List_ptr list)
+{
+  Node_ptr first_element = list->head;
+  list->head = first_element->next;
+  free(first_element);
+  return Success;
+}
