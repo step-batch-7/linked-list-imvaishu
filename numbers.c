@@ -2,6 +2,16 @@
 #include "list.h"
 #include "numbers.h"
 
+void display_done(Status current_status) {
+  if(current_status == 1){
+  printf("Done\n");
+  }
+  else
+  {
+  printf("Fail\n");
+  }
+}
+
 char take_operation_to_perform(void)
 {
   char option;
@@ -62,6 +72,10 @@ Status choose_operation(List_ptr list,char operation)
   case 'j':
      return clear_list(list);
      break;
+  case 'k':
+     take_input(&value,INPUT_TEXT);
+     return is_number_exist(list,value);
+     break;           
   case 'l':
      display(list);
      return Success;
@@ -78,10 +92,10 @@ int main(void)
   while(operation != 'm')
   {
   status = choose_operation(list,operation);
-  printf("status %u\n",status);
+  display_done(status);
   operation = take_operation_to_perform();
   }
-  printf("status %u\n",status);
+  display_done(status);
   destroy_list(list);
   return 0;
 }

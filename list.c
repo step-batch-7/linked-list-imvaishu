@@ -237,3 +237,18 @@ Node_ptr p_walk = list->head;
   list->count = 0;
   free(list);
 }
+
+Status is_number_exist(List_ptr list,int value)
+{
+  Node_ptr p_walk = list->head;
+
+  for(int index = 1 ; index < list->count ; index++)
+  {
+    if(p_walk->value == value)
+    {
+      return Success;
+    }
+    p_walk = p_walk->next;
+  }
+  return Failure;
+}

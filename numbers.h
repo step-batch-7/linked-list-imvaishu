@@ -10,6 +10,8 @@ char take_operation_to_perform(void);
 
 void take_input(int *value,char *text);
 
+void display_done(Status current_status);
+
 Status choose_operation(List_ptr list,char operation);
 
 #endif
