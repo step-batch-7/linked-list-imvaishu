@@ -54,7 +54,11 @@ Status choose_operation(List_ptr list,char operation)
   case 'h':
      take_input(&value,INPUT_TEXT);
      return remove_first_occurrence(list,value);
-     break;                   
+     break;
+  case 'i':
+     take_input(&value,INPUT_TEXT);
+     return remove_all_occurrences(list,value);
+     break;    
   case 'l':
      display(list);
      return Success;
