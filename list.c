@@ -102,7 +102,7 @@ Status remove_from_start(List_ptr list)
   Node_ptr first_element = list->head;
   if(list->head == NULL)
   {
-    return Success;
+    return Failure;
   }
   list->head = first_element->next;
   list->count--;
@@ -251,4 +251,4 @@ Status is_number_exist(List_ptr list,int value)
     p_walk = p_walk->next;
   }
   return Failure;
-}
+}   
