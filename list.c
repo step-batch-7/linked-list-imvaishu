@@ -246,7 +246,7 @@ Status is_number_exist(List_ptr list,int value)
 {
   Node_ptr p_walk = list->head;
 
-  for(int index = 1 ; index < list->count ; index++)
+  for(int index = 0 ; index < list->count ; index++)
   {
     if(p_walk->value == value)
     {
