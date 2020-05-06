@@ -10,7 +10,7 @@ void display_done(Status current_status) {
   {
   printf("Fail\n");
   }
-}
+} 
 
 char take_operation_to_perform(void)
 {

@@ -118,7 +118,7 @@ Status remove_from_end(List_ptr list)
   int position = 0;
   if(list->head == NULL)
   {
-    return Success;
+    return Failure;
   }
   if(list->count == 1)
   {
@@ -147,21 +147,21 @@ Status remove_from_end(List_ptr list)
   Node_ptr p_walk = list->head;
   Node_ptr previous_element;
   Node_ptr remove_element;
-  if(position <= 0 || position > list->count)
+  if(position < 0 || position >= list->count)
   {
     return Failure;
   }
-  if(position == 1)
+  if(position == 0)
   {
     return remove_from_start(list); 
   }
-  if(position == list->count)
+  if(position == (list->count-1))
   {
     return remove_from_end(list);
   }
   int count = 0;
-  while(count < position){
-    if(count == position - 2 )
+  while(count <= position){
+    if(count == position - 1)
     {
      previous_element = p_walk;
      remove_element = p_walk->next;
