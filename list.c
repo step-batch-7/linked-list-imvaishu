@@ -155,7 +155,7 @@ Status remove_from_end(List_ptr list)
   {
     return remove_from_start(list); 
   }
-  if(position == (list->count-1))
+  if(position == (list->count - 1))
   {
     return remove_from_end(list);
   }
@@ -179,7 +179,7 @@ Status remove_first_occurrence(List_ptr list, int value)
 {
   Node_ptr p_walk = list->head;
 
-  for(int index = 1 ; index < list->count ; index++)
+  for(int index = 0 ; index < list->count ; index++)
   {
     if(p_walk->value == value)
     {
@@ -187,14 +187,14 @@ Status remove_first_occurrence(List_ptr list, int value)
     }
     p_walk = p_walk->next;
   }
-  return Success;
+  return Failure;
 }
 
 Status remove_all_occurrences(List_ptr list, int value)
 {
   Node_ptr p_walk = list->head;
 
-  for(int index = 1 ; index <= list->count ; index++)
+  for(int index = 1 ; index < list->count ; index++)
   {
     if(p_walk->value == value)
     {
